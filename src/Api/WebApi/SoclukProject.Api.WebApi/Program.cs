@@ -13,6 +13,10 @@ builder.Services.AddInfrastructureRegistration(builder.Configuration);
 
 var app = builder.Build();
 
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+AppContext.SetSwitch("Npgsql.DisableDateTimeInfinityConversions", true);
+
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

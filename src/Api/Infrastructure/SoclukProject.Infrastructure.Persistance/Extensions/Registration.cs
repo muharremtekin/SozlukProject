@@ -13,6 +13,10 @@ public static class Registration
             var connectionString = configuration["connectionString"].ToString();
             options.UseNpgsql(connectionString);
         });
+
+        //var seedData = new SeedData();
+        //seedData.SeedAsync(configuration).GetAwaiter().GetResult();
+
         return services;
     }
 }
