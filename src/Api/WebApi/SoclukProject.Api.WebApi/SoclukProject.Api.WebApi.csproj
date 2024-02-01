@@ -8,10 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Core\SoclukProject.Api.Application\SoclukProject.Api.Application.csproj" />
     <ProjectReference Include="..\..\Infrastructure\SoclukProject.Infrastructure.Persistance\SoclukProject.Infrastructure.Persistance.csproj" />
   </ItemGroup>
 

@@ -1,17 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SoclukProject.Api.Application.Interfaces.Repositories;
 using SoclukProject.Api.Domain.Models;
-using SoclukProject.Infrastructure.Persistance.Context;
 using System.Linq.Expressions;
 
 namespace SoclukProject.Infrastructure.Persistance.Repositories;
 
 public class EntityRepository<TEntity> : IEntityRepository<TEntity> where TEntity : BaseEntity
 {
-    private readonly SozlukContext dbContext;
+    private readonly DbContext dbContext;
     protected DbSet<TEntity> entity => dbContext.Set<TEntity>();
 
-    public EntityRepository(SozlukContext dbContext) =>
+    public EntityRepository(DbContext dbContext) =>
         this.dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
 
     #region Add methods
