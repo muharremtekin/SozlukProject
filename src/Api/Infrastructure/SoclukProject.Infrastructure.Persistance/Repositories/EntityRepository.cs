@@ -1,16 +1,17 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SoclukProject.Api.Application.Interfaces.Repositories;
 using SoclukProject.Api.Domain.Models;
+using SoclukProject.Infrastructure.Persistance.Context;
 using System.Linq.Expressions;
 
 namespace SoclukProject.Infrastructure.Persistance.Repositories;
 
 public class EntityRepository<TEntity> : IEntityRepository<TEntity> where TEntity : BaseEntity
 {
-    private readonly DbContext dbContext;
+    private readonly SozlukContext dbContext;
     protected DbSet<TEntity> entity => dbContext.Set<TEntity>();
 
-    public EntityRepository(DbContext dbContext) =>
+    public EntityRepository(SozlukContext dbContext) =>
         this.dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
 
     #region Add methods
@@ -159,9 +160,7 @@ public class EntityRepository<TEntity> : IEntityRepository<TEntity> where TEntit
     public async Task<int> DeleteAsync(TEntity entity)
     {
         if (dbContext.Entry(entity).State == EntityState.Detached)
-        {
             this.entity.Attach(entity);
-        }
 
         this.entity.Remove(entity);
 
@@ -223,7 +222,7 @@ public class EntityRepository<TEntity> : IEntityRepository<TEntity> where TEntit
     {
         TEntity found = await entity.FindAsync(id);
 
-        if (found == null)
+        if (found is null)
             return null;
 
         if (noTracking)
@@ -265,9 +264,8 @@ public class EntityRepository<TEntity> : IEntityRepository<TEntity> where TEntit
         IQueryable<TEntity> query = entity;
 
         if (predicate != null)
-        {
             query = query.Where(predicate);
-        }
+
 
         query = ApplyIncludes(query, includes);
 

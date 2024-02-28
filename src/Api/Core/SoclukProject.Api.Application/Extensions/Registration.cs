@@ -1,5 +1,9 @@
 ﻿using FluentValidation;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using SoclukProject.Api.Application.Features.Commands.User.Login;
+using SoclukProject.Common.Models.Queries;
+using SoclukProject.Common.Models.RequestModels;
 using System.Reflection;
 
 namespace SoclukProject.Api.Application.Extensions;
@@ -15,7 +19,7 @@ public static class Registration
             cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly());
         });
 
-        //services.AddScoped(typeof(IRequestHandler<LoginUserCommand, LoginUserViewModel>), typeof(LoginUserCommandHandler));
+        services.AddScoped(typeof(IRequestHandler<LoginUserCommand, LoginUserViewModel>), typeof(LoginUserCommandHandler));
 
 
 

@@ -11,7 +11,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace SoclukProject.Api.Application.Features.Commands.User;
+namespace SoclukProject.Api.Application.Features.Commands.User.Login;
 
 public class LoginUserCommandHandler : IRequestHandler<LoginUserCommand, LoginUserViewModel>
 {
@@ -61,7 +61,7 @@ public class LoginUserCommandHandler : IRequestHandler<LoginUserCommand, LoginUs
 
     private string GenerateToken(Claim[] claims)
     {
-        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configration["AuthConfig:Secret"]));
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configration["AuthConfig:SecretKey"]));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
         var expire = DateTime.UtcNow.AddDays(7);
 

@@ -1,12 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
-using SoclukProject.Api.Application.Interfaces.Repositories;
+﻿using SoclukProject.Api.Application.Interfaces.Repositories;
 using SoclukProject.Api.Domain.Models;
+using SoclukProject.Infrastructure.Persistance.Context;
 
 namespace SoclukProject.Infrastructure.Persistance.Repositories;
 
 public class EmailConfirmationRepository : EntityRepository<EmailConfirmation>, IEmailConfirmationRepository
 {
-    public EmailConfirmationRepository(DbContext dbContext) : base(dbContext)
+    public EmailConfirmationRepository(SozlukContext dbContext) : base(dbContext)
     {
     }
 }

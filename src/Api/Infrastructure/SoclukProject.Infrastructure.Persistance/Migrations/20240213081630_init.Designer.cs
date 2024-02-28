@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using SoclukProject.Infrastructure.Persistance.Context;
@@ -11,9 +12,11 @@ using SoclukProject.Infrastructure.Persistance.Context;
 namespace SoclukProject.Infrastructure.Persistance.Migrations
 {
     [DbContext(typeof(SozlukContext))]
-    partial class SozlukContextModelSnapshot : ModelSnapshot
+    [Migration("20240213081630_init")]
+    partial class init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,8 +33,7 @@ namespace SoclukProject.Infrastructure.Persistance.Migrations
 
                     b.Property<DateTime>("CreateDate")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("timestamp with time zone")
-                        .HasDefaultValue(new DateTime(2024, 2, 28, 12, 21, 8, 385, DateTimeKind.Utc).AddTicks(3985));
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("NewEmailAddress")
                         .IsRequired()
@@ -58,8 +60,7 @@ namespace SoclukProject.Infrastructure.Persistance.Migrations
 
                     b.Property<DateTime>("CreateDate")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("timestamp with time zone")
-                        .HasDefaultValue(new DateTime(2024, 2, 28, 12, 21, 8, 385, DateTimeKind.Utc).AddTicks(5425));
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<Guid>("CreatedById")
                         .HasColumnType("uuid");
@@ -87,8 +88,7 @@ namespace SoclukProject.Infrastructure.Persistance.Migrations
 
                     b.Property<DateTime>("CreateDate")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("timestamp with time zone")
-                        .HasDefaultValue(new DateTime(2024, 2, 28, 12, 21, 8, 386, DateTimeKind.Utc).AddTicks(3099));
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<Guid>("CreatedById")
                         .HasColumnType("uuid");
@@ -113,8 +113,7 @@ namespace SoclukProject.Infrastructure.Persistance.Migrations
 
                     b.Property<DateTime>("CreateDate")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("timestamp with time zone")
-                        .HasDefaultValue(new DateTime(2024, 2, 28, 12, 21, 8, 386, DateTimeKind.Utc).AddTicks(5045));
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<Guid>("CreatedById")
                         .HasColumnType("uuid");
@@ -139,8 +138,7 @@ namespace SoclukProject.Infrastructure.Persistance.Migrations
 
                     b.Property<DateTime>("CreateDate")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("timestamp with time zone")
-                        .HasDefaultValue(new DateTime(2024, 2, 28, 12, 21, 8, 386, DateTimeKind.Utc).AddTicks(8267));
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<Guid>("CreatedById")
                         .HasColumnType("uuid");
@@ -166,8 +164,7 @@ namespace SoclukProject.Infrastructure.Persistance.Migrations
 
                     b.Property<DateTime>("CreateDate")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("timestamp with time zone")
-                        .HasDefaultValue(new DateTime(2024, 2, 28, 12, 21, 8, 385, DateTimeKind.Utc).AddTicks(7679));
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<Guid>("CreatedById")
                         .HasColumnType("uuid");
@@ -192,8 +189,7 @@ namespace SoclukProject.Infrastructure.Persistance.Migrations
 
                     b.Property<DateTime>("CreateDate")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("timestamp with time zone")
-                        .HasDefaultValue(new DateTime(2024, 2, 28, 12, 21, 8, 386, DateTimeKind.Utc).AddTicks(1428));
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<Guid>("CreatedById")
                         .HasColumnType("uuid");
@@ -219,8 +215,7 @@ namespace SoclukProject.Infrastructure.Persistance.Migrations
 
                     b.Property<DateTime>("CreateDate")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("timestamp with time zone")
-                        .HasDefaultValue(new DateTime(2024, 2, 28, 12, 21, 8, 386, DateTimeKind.Utc).AddTicks(9958));
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("EmailAddress")
                         .IsRequired()

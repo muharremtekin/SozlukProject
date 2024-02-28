@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using SoclukProject.Common.Models.RequestModels;
 
-namespace SoclukProject.Api.Application.Features.Commands.User;
+namespace SoclukProject.Api.Application.Features.Commands.User.Login;
 
 public class LoginUserCommandValidator : AbstractValidator<LoginUserCommand>
 {

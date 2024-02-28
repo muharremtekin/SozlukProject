@@ -9,7 +9,7 @@ public abstract class BaseEntityConfiguration<T> : IEntityTypeConfiguration<T> w
     {
         builder.HasKey(e => e.Id);
         builder.Property(e => e.Id).ValueGeneratedOnAdd();
-        builder.Property(e => e.CreateDate).ValueGeneratedOnAdd();
+        builder.Property(e => e.CreateDate).HasDefaultValue(DateTime.UtcNow);
     }
 }
 

@@ -13,14 +13,14 @@ public static class Registration
     {
         services.AddDbContext<SozlukContext>(options =>
         {
-            var connectionString = configuration["connectionString"].ToString();
+            var connectionString = configuration.GetConnectionString("sqlConnection");
             options.UseNpgsql(connectionString);
         });
 
         //var seedData = new SeedData();
         //seedData.SeedAsync(configuration).GetAwaiter().GetResult();
 
-        services.AddScoped<IUserRepository, UserRepository>();
+        services.AddTransient<IUserRepository, UserRepository>();
         services.AddScoped<IEmailConfirmationRepository, EmailConfirmationRepository>();
         services.AddScoped<IEntryRepository, EntryRepository>();
         services.AddScoped<IEntryCommentRepository, EntryCommentRepository>();

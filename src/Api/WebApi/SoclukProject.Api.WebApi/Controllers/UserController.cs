@@ -17,10 +17,22 @@ public class UserController : ControllerBase
 
     [HttpPost]
     [Route("login")]
-    public async Task<IActionResult> Login([FromRoute] LoginUserCommand loginUserCommand)
+    public async Task<IActionResult> Login([FromBody] LoginUserCommand loginUserCommand)
     {
         var res = await _mediator.Send(loginUserCommand);
         return Ok(res);
+    }
+    [HttpPost]
+    public async Task<IActionResult> CreateUser([FromBody] CreateUserCommand createUserCommand)
+    {
+        var guid = await _mediator.Send(createUserCommand);
+        return Ok(guid);
+    }
+    [HttpPut]
+    public async Task<IActionResult> UpdateUser([FromBody] UpdateUserCommand updateUserCommand)
+    {
+        var guid = await _mediator.Send(updateUserCommand);
+        return Ok(guid);
     }
 }
 

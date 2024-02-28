@@ -27,7 +27,7 @@ public class SeedData
     public async Task SeedAsync(IConfiguration configuration)
     {
         var dbContextBuilder = new DbContextOptionsBuilder();
-        dbContextBuilder.UseNpgsql("Server=localhost;Database=SozlukProject;Port=5432;User ID=postgres;Password=mysecretpassword");
+        dbContextBuilder.UseNpgsql("Server=localhost;Database=SozlukProject;Port=5432;User ID=postgres;Password=mysecretpassword123");
 
         var context = new SozlukContext(dbContextBuilder.Options);
 
@@ -56,7 +56,7 @@ public class SeedData
             .RuleFor(e => e.EntryId, e => e.PickRandom(entryGuids))
             .Generate(1000);
 
-        await context.Entries.AddRangeAsync(entries);
+        await context.EntryComments.AddRangeAsync(comments);
 
         await context.SaveChangesAsync();
 
