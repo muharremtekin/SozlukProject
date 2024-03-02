@@ -1,10 +1,12 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using SoclukProject.Api.Application.Features.Commands.User.ConfirmEmail;
+using SoclukProject.Common.Events.User;
 using SoclukProject.Common.Models.RequestModels;
 
 namespace SoclukProject.Api.WebApi.Controllers;
 
-[Route("api/[controller]")]
+[Route("api/users")]
 [ApiController]
 public class UserController : ControllerBase
 {
@@ -17,21 +19,39 @@ public class UserController : ControllerBase
 
     [HttpPost]
     [Route("login")]
-    public async Task<IActionResult> Login([FromBody] LoginUserCommand loginUserCommand)
+    public async Task<IActionResult> Login([FromBody] LoginUserCommand command)
     {
-        var res = await _mediator.Send(loginUserCommand);
+        var res = await _mediator.Send(command);
         return Ok(res);
     }
     [HttpPost]
-    public async Task<IActionResult> CreateUser([FromBody] CreateUserCommand createUserCommand)
+    [Route("confirm")]
+    public async Task<IActionResult> ConfirmEmail([FromRoute] Guid id)
     {
-        var guid = await _mediator.Send(createUserCommand);
+        var command = new ConfirmEmailCommand() { ConfirmationId = id };
+
+        var res = await _mediator.Send(command);
+        return Ok(res);
+    }
+    [HttpPost]
+    [Route("changePassword")]
+    public async Task<IActionResult> ChangePassword([FromBody] ChangeUserPasswordCommand command)
+    {
+        var res = await _mediator.Send(command);
+        return Ok(res);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> CreateUser([FromBody] CreateUserCommand command)
+    {
+        var guid = await _mediator.Send(command);
         return Ok(guid);
     }
+
     [HttpPut]
-    public async Task<IActionResult> UpdateUser([FromBody] UpdateUserCommand updateUserCommand)
+    public async Task<IActionResult> UpdateUser([FromBody] UpdateUserCommand command)
     {
-        var guid = await _mediator.Send(updateUserCommand);
+        var guid = await _mediator.Send(command);
         return Ok(guid);
     }
 }
