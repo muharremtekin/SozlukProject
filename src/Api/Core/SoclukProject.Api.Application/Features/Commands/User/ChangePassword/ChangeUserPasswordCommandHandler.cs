@@ -24,12 +24,12 @@ public class ChangeUserPasswordCommandHandler : IRequestHandler<ChangeUserPasswo
         if (dbUser is null)
             throw new DatabaseValidationException("User not found!");
 
-        var encNewPass = PasswordEncryptor.Encrypt(request.OldPassword);
+        var encOldPass = PasswordEncryptor.Encrypt(request.OldPassword);
 
-        if (encNewPass != dbUser.Password)
+        if (encOldPass != dbUser.Password)
             throw new DatabaseValidationException("Old password is wrong!");
 
-        dbUser.Password = encNewPass;
+        dbUser.Password = PasswordEncryptor.Encrypt(request.NewPassword);
 
         await _userRepository.UpdateAsync(dbUser);
 
