@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using SoclukProject.Common.ViewModels;
 
 namespace SoclukProject.Common.Models.RequestModels;
 public class CreateEntryCommentVoteCommand : IRequest<bool>
@@ -11,10 +10,10 @@ public class CreateEntryCommentVoteCommand : IRequest<bool>
     {
 
     }
-    public CreateEntryCommentVoteCommand(Guid entryCommentId, Guid CreatedBy, VoteType voteType)
+    public CreateEntryCommentVoteCommand(Guid entryCommentId, Guid createdBy, VoteType voteType)
     {
         EntryCommentId = entryCommentId;
-        CreatedBy = CreatedBy;
+        CreatedBy = createdBy;
         VoteType = voteType;
     }
 }

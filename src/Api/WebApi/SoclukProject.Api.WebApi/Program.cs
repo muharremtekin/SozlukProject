@@ -1,5 +1,6 @@
 using FluentValidation.AspNetCore;
 using SoclukProject.Api.Application.Extensions;
+using SoclukProject.Api.WebApi.Infrastructure.Extensions;
 using SoclukProject.Infrastructure.Persistance.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,8 +17,10 @@ builder.Services.AddControllers()
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.ConfigureAuth(builder.Configuration);
 builder.Services.AddApplicationResgistration();
 builder.Services.AddInfrastructureRegistration(builder.Configuration);
+
 var app = builder.Build();
 
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
@@ -32,6 +35,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.ConfigureExceptionHandling(app.Environment.IsDevelopment());
 
 app.UseAuthorization();
 

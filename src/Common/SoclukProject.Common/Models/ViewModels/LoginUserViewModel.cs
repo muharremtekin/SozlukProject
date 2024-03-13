@@ -1,4 +1,4 @@
-﻿namespace SoclukProject.Common.Models.Queries;
+﻿namespace SoclukProject.Common.Models.ViewModels;
 
 public class LoginUserViewModel
 {

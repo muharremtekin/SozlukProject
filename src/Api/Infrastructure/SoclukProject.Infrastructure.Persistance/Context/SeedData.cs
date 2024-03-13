@@ -27,7 +27,7 @@ public class SeedData
     public async Task SeedAsync(IConfiguration configuration)
     {
         var dbContextBuilder = new DbContextOptionsBuilder();
-        dbContextBuilder.UseNpgsql("Server=localhost;Database=SozlukProject;Port=5432;User ID=postgres;Password=mysecretpassword123");
+        dbContextBuilder.UseNpgsql("Server=localhost;Database=SozlukProject;Port=5432;User ID=postgres;Password=mysecretpassword");
 
         var context = new SozlukContext(dbContextBuilder.Options);
 
