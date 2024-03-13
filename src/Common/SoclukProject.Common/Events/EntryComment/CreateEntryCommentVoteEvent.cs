@@ -1,4 +1,4 @@
-﻿using SoclukProject.Common.ViewModels;
+﻿using SoclukProject.Common.Models;
 
 namespace SoclukProject.Common.Events.EntryComment;
 public class CreateEntryCommentVoteEvent

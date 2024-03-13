@@ -14,7 +14,7 @@ public class CreateEntryCommentFavHandler : IRequestHandler<CreateEntryCommentFa
             queueName: SozlukConstants.CreateEntryCommentFavQueueName,
             obj: new CreateEntryCommentFavEvent()
             {
-                CreatedById = request.UserId,
+                CreatedBy = request.UserId,
                 EntryCommentId = request.EntryCommentId,
             });
         return await Task.FromResult(true);

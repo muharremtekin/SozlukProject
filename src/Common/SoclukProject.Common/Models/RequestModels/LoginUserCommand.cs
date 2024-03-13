@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using SoclukProject.Common.Models.Queries;
+using SoclukProject.Common.Models.ViewModels;
 
 namespace SoclukProject.Common.Models.RequestModels;
 

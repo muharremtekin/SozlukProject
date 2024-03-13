@@ -3,6 +3,6 @@
 public class CreateEntryCommentFavEvent
 {
     public Guid EntryCommentId { get; set; }
-    public Guid CreatedById { get; set; }
+    public Guid CreatedBy { get; set; }
 }
 
